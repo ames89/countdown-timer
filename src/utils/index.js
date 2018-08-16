@@ -6,11 +6,11 @@ export const queryObject = () => {
 };
 
 export const setLocalStorageTime = time => {
-  localStorage.setItem(LS_CURRENT_TIME, time);
+  sessionStorage.setItem(LS_CURRENT_TIME, time);
 };
 
 export const getLocalStorageTime = () => {
-  const time = localStorage.getItem(LS_CURRENT_TIME);
+  const time = sessionStorage.getItem(LS_CURRENT_TIME);
   return (time && +time) || 0;
 };
 
