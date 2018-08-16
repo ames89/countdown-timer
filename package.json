@@ -2,6 +2,7 @@
   "name": "asd",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://ames89.github.io/countdown-timer",
   "dependencies": {
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
