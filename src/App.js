@@ -21,12 +21,34 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.setWidth, 1000);
+    this.setLocalInterval();
+    window.addEventListener("click", this.pauseTimer);
+    window.oncontextmenu = () => !!this.resetTimer();
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
+    window.removeEventListener("click", this.pauseTimer);
+    // document.removeEventListener("dblclick", this.resetTimer);
   }
+
+  setLocalInterval = () => {
+    this.interval = setInterval(this.setWidth, 1000);
+  };
+
+  pauseTimer = () => {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    } else {
+      this.setLocalInterval();
+    }
+  };
+
+  resetTimer = () => {
+    this.currentTime = 0;
+    this.setWidth();
+  };
 
   setWidth = () => {
     this.currentTime += 1000;
