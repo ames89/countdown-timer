@@ -1,5 +1,5 @@
 .outer-App {
-  height: calc(100% - 4px);
+  height: 100%;
   border-style: solid;
   box-sizing: border-box;
   border-width: 2px;
