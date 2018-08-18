@@ -22,38 +22,54 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setLocalInterval();
-    window.addEventListener("click", this.pauseTimer);
+    window.addEventListener("click", this.playPauseTimer);
     window.oncontextmenu = () => !!this.resetTimer();
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
-    window.removeEventListener("click", this.pauseTimer);
-    // document.removeEventListener("dblclick", this.resetTimer);
+    window.removeEventListener("click", this.playPauseTimer);
   }
 
   setLocalInterval = () => {
     this.interval = setInterval(this.setWidth, 1000);
   };
 
+  playTimer = () => {
+    if (!this.interval) {
+      this.setLocalInterval();
+    }
+  };
+
   pauseTimer = () => {
     if (this.interval) {
       clearInterval(this.interval);
       this.interval = null;
+    }
+  };
+
+  playPauseTimer = () => {
+    if (this.interval) {
+      this.pauseTimer();
     } else {
-      this.setLocalInterval();
+      this.playTimer();
     }
   };
 
   resetTimer = () => {
     this.currentTime = 0;
+    this.pauseTimer();
     this.setWidth();
   };
 
   setWidth = () => {
     this.currentTime += 1000;
+    const newWidth = currentPercentageTime(this.currentTime);
+    if (newWidth === 100) {
+      this.pauseTimer();
+    }
     this.setState({
-      width: `${currentPercentageTime(this.currentTime)}%`
+      width: `${newWidth}%`
     });
   };
 
