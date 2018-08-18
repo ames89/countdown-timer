@@ -1,3 +1,10 @@
+.outer-App {
+  height: calc(100% - 4px);
+  border-style: solid;
+  box-sizing: border-box;
+  border-width: 2px;
+}
+
 .App {
   transition-timing-function: ease-in;
   transition: 1s;

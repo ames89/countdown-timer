@@ -76,8 +76,10 @@ class App extends React.Component {
   render() {
     return (
       <div
+        className="outer-App"
         style={{
-          backgroundColor: this.state.background
+          backgroundColor: this.state.background,
+          borderColor: this.state.color
         }}
       >
         <div
