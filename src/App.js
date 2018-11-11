@@ -1,13 +1,13 @@
-import * as React from "react";
+import React, { Component } from 'reactn';
 import {
   currentPercentageTime,
   getLocalStorageTime,
   queryObject
-} from "./utils";
+} from './utils';
 
-import "./App.css";
+import styles from './App.module.scss';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -15,20 +15,20 @@ class App extends React.Component {
 
     this.state = {
       width: `${currentPercentageTime(this.currentTime)}%`,
-      color: queryObject().color || "red",
-      background: queryObject().background || "white"
+      color: queryObject().color || 'red',
+      background: queryObject().background || 'white'
     };
   }
 
   componentDidMount() {
     this.setLocalInterval();
-    window.addEventListener("click", this.playPauseTimer);
+    window.addEventListener('click', this.playPauseTimer);
     window.oncontextmenu = () => !!this.resetTimer();
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
-    window.removeEventListener("click", this.playPauseTimer);
+    window.removeEventListener('click', this.playPauseTimer);
   }
 
   setLocalInterval = () => {
@@ -76,14 +76,14 @@ class App extends React.Component {
   render() {
     return (
       <div
-        className="outer-App"
+        className={styles['outer-App']}
         style={{
           backgroundColor: this.state.background,
           borderColor: this.state.color
         }}
       >
         <div
-          className="App"
+          className={styles['App']}
           style={{
             width: this.state.width,
             backgroundColor: this.state.color

@@ -1,5 +1,5 @@
-import queryString from "../libs/query-string";
-import { LS_CURRENT_TIME, URL_MAX_TIME } from "./constants";
+import * as queryString from '../libs/query-string';
+import { LS_CURRENT_TIME, URL_MAX_TIME } from './constants';
 
 export const queryObject = () => {
   return queryString.parse(window.location.search);
